@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>National Health Data</title>
+    <link rel="icon" href="data:;base64,iVBORwOKGO=" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1><center>Project 1 - National Health Data</center></h1>
+    <h2><center>Nick Murray</center></h2>
+    <h5><center>*Data comes from national_health_data.csv*</center></h5>
+
+    <h3 style="display: flex; justify-content: center;">Here are two maps comparing percentages of eduaction less than highschool and poverty.</h3>
+    <div id="map" style="display: flex; justify-content: center;"></div>
+
+    <svg height="5" width="5" xmlns="http://www.w3.org/2000/svg" version="1.1"> <defs> <pattern id="lightstripe" patternUnits="userSpaceOnUse" width="5" height="5"> <image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgogIDxyZWN0IHdpZHRoPSc1JyBoZWlnaHQ9JzUnIGZpbGw9J3doaXRlJy8+CiAgPHBhdGggZD0nTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVonIHN0cm9rZT0nIzg4OCcgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPg==" x="0" y="0" width="5" height="5"> </image> </pattern> </defs></svg>
+    
+    <h3 style="display: flex; justify-content: center;">Here we are comparing whatever data you would like. Change to prefered data with the dropdowns.</h3>
+    <h3 style="display: flex; justify-content: center;">On the left is a scatter plot that you can change both the x and y axis' to simultaneously compare data.</h3>
+    <h3 style="display: flex; justify-content: center;">On the right is a bar graph that you can change the x axis to show how many counties are higher or lower in different data points.</h3>
+
+    <div id="dropdowns" style="display: flex; justify-content: center;">
+    <label for="scatter-xAxis" style="margin-right: 10px;"><strong>X Values: </strong></label>
+    <select name="scatter-xAxis" id="scatter-xAxis" style="margin-right: 10px;">
+        <option selected="selected" value="poverty_perc" name="Poverty Percent">Poverty Percent</option>
+        <option value="median_household_income" name="Median Household Income">Median Household Income</option>
+        <option value="education_less_than_high_school_percent" name="Education Less Than High School Percent">Education Less Than High School Percent</option>
+        <option value="air_quality" name="Air Quality">Air Quality</option>
+        <option value="park_access" name="Park Access">Park Access</option>
+        <option value="percent_inactive" name="Percent Inactive">Percent Inactive</option>
+        <option value="percent_smoking" name="Percent Smoking">Percent Smoking</option>
+        <!-- <option value="urban_rural_status" name="Urban Rural Status">Urban Rural Status</option> -->
+        <option value="elderly_percentage" name="Elderly Percentage">Elderly Percentage</option>
+        <option value="number_of_hospitals" name="Number Of Hospitals">Number Of Hospitals</option>
+        <option value="number_of_primary_care_physicians" name="Number of Primary Care Physicians">Number of Primary Care Physicians</option>
+        <option value="percent_no_health_insurance" name="Percent No Health Insurance">Percent No Health Insurance</option>
+        <option value="percent_high_blood_pressure" name="Percent High Blood Pressure">Percent High Blood Pressure</option>
+        <option value="percent_coronary_heart_disease" name="Percent Coronary Heart Disease">Percent Coronary Heart Disease</option>
+        <option value="percent_stroke" name="Percent Stroke">Percent Stroke</option>
+        <option value="percent_high_cholesterol" name="Percent High Cholesterol">Percent High Cholesterol</option>
+    </select>
+
+    <label for="scatter-yAxis" style="margin-right: 10px;"><strong>Y-Axis Values: </strong></label>
+    <select name="scatter-yAxis" id="scatter-yAxis">
+        <option value="poverty_perc" name="Poverty Percent">Poverty Percent</option>
+        <option value="median_household_income" name="Median Household Income">Median Household Income</option>
+        <option selected="selected" value="education_less_than_high_school_percent" name="Education Less Than High School Percent">Education Less Than High School Percent</option>
+        <option value="air_quality" name="Air Quality">Air Quality</option>
+        <option value="park_access" name="Park Access">Park Access</option>
+        <option value="percent_inactive" name="Percent Inactive">Percent Inactive</option>
+        <option value="percent_smoking" name="Percent Smoking">Percent Smoking</option>
+        <!-- <option value="urban_rural_status" name="Urban Rural Status">Urban Rural Status</option> -->
+        <option value="elderly_percentage" name="Elderly Percentage">Elderly Percentage</option>
+        <option value="number_of_hospitals" name="Number Of Hospitals">Number Of Hospitals</option>
+        <option value="number_of_primary_care_physicians" name="Number of Primary Care Physicians">Number of Primary Care Physicians</option>
+        <option value="percent_no_health_insurance" name="Percent No Health Insurance">Percent No Health Insurance</option>
+        <option value="percent_high_blood_pressure" name="Percent High Blood Pressure">Percent High Blood Pressure</option>
+        <option value="percent_coronary_heart_disease" name="Percent Coronary Heart Disease">Percent Coronary Heart Disease</option>
+        <option value="percent_stroke" name="Percent Stroke">Percent Stroke</option>
+        <option value="percent_high_cholesterol" name="Percent High Cholesterol">Percent High Cholesterol</option>
+    </select>
+    </div>
+
+    <div style="display: flex; justify-content: center;">
+        <svg id="scatterplot"></svg>
+        <svg id="barchart"></svg>
+    </div>
+    <div id="tooltip"></div>
+    
+    <script src="js/d3.v6.min.js"></script>
+    <script src="js/topojson.v3.js"></script>
+    <script src="js/choroplethMap1.js"></script>
+    <script src="js/choroplethMap2.js"></script>
+    <script src="js/scatterPlot.js"></script>
+    <script src="js/barchart.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>

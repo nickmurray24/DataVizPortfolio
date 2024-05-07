@@ -101,17 +101,6 @@ Promise.all([
     scatterplot.updateVis();
   }
 
-  const barchart = new Barchart({
-    parentElement: '#barchart'
-  }, countiesJSON, xAxisData, countyCount);
-
-  // Function to update the scatterplot class
-  function updateBarChart() {
-    barchart.xAxisData = xAxisValue.value;
-    barchart.updateVis();
-  }
-  barchart.updateVis();
-
 })
 
 .catch(error => console.error(error));
